@@ -36,7 +36,7 @@ public class MealServlet extends HttpServlet {
         String id = request.getParameter("id");
         Meal meal = new Meal(id.isEmpty() ? null : Integer.valueOf(id),
                 LocalDateTime.parse(request.getParameter("dateTime")),
-                request.getParameter("decription"),
+                request.getParameter("description"),
                 Integer.valueOf(request.getParameter("calories")));
         LOG.info(meal.isNew() ? "Create {}" : "Update {}", meal);
         repository.save(meal);
@@ -60,7 +60,7 @@ public class MealServlet extends HttpServlet {
             int id = getId(request);
             LOG.info("Delete {}", id);
             repository.delete(id);
-            response.sendRedirect("meals.jsp");
+            response.sendRedirect("meals");
         } else {
             final Meal meal = action.equals("create") ? new Meal(LocalDateTime.now(), "", 1000) :
                     repository.get(getId(request));
