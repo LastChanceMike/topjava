@@ -1,8 +1,8 @@
 package ru.javawebinar.topjava.web.user;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.service.UserService;
 
@@ -23,29 +23,29 @@ public abstract class AbstractUserController {
     }
 
     public User get(int id) {
-        LOG.info("get " + id);
+        LOG.info("get {}", id);
         return service.get(id);
     }
 
     public User create(User user) {
-        LOG.info("create " + user);
+        LOG.info("create {}", user);
         checkNew(user);
         return service.save(user);
     }
 
     public void delete(int id) {
-        LOG.info("delete " + id);
+        LOG.info("delete {}", id);
         service.delete(id);
     }
 
     public void update(User user, int id) {
-        LOG.info("update " + user);
+        LOG.info("update {}", user);
         checkIdConsistent(user, id);
         service.update(user);
     }
 
     public User getByMail(String email) {
-        LOG.info("getByEmail " + email);
+        LOG.info("getByEmail {}", email);
         return service.getByEmail(email);
     }
 }
