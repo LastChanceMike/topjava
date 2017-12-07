@@ -1,5 +1,6 @@
 package ru.javawebinar.topjava.web;
 
+/*
 import org.junit.*;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -52,4 +53,4 @@ public class InMemoryAdminRestControllerTest {
     public void testDeleteNotFound() throws Exception {
         controller.delete(10);
     }
-}
+}*/
