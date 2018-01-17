@@ -32,6 +32,9 @@
         <!-- Hibernate -->
         <hibernate.version>5.2.9.Final</hibernate.version>
         <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
+
+        <!--Tools-->
+        <ehcache.version>2.10.3</ehcache.version>
     </properties>
 
     <build>
@@ -91,7 +94,7 @@
         <!-- Spring -->
         <dependency>
             <groupId>org.springframework</groupId>
-            <artifactId>spring-context</artifactId>
+            <artifactId>spring-context-support</artifactId>
             <version>${spring.version}</version>
             <exclusions>
                 <exclusion>
@@ -129,10 +132,17 @@
             <artifactId>hibernate-validator</artifactId>
             <version>${hibernate-validator.version}</version>
         </dependency>
+
         <dependency>
             <groupId>javax.el</groupId>
             <artifactId>javax.el-api</artifactId>
             <version>3.0.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+            <version>${ehcache.version}</version>
         </dependency>
 
         <!--Web-->
