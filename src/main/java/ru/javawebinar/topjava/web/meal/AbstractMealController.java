@@ -55,6 +55,12 @@ public abstract class AbstractMealController {
         service.update(meal, userId);
     }
 
+    /**
+     * <ol>Filter separately
+     *   <li>by date</li>
+     *   <li>by time for every date</li>
+     * </ol>
+     */
     public List<MealWithExceed> getBetween(LocalDate startDate, LocalTime startTime, LocalDate endDate, LocalTime endTime) {
         int userId = AuthorizedUser.id();
         LOG.info("getBetween dates({} - {}) time({} - {}) for User {}", startDate, endDate, startTime, endTime, userId);
