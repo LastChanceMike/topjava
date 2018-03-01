@@ -39,7 +39,7 @@ public class MealRestControllerTest extends AbstractControllerTest {
 
     @Test
     public void testDelete() throws Exception {
-        mockMvc.perform(delete(REST_URL + MEAL1_ID).contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(delete(REST_URL + MEAL1_ID))
                 .andExpect(status().isOk());
         MATCHER.assertCollectionEquals(Arrays.asList(MEAL6, MEAL5, MEAL4, MEAL3, MEAL2), service.getAll(START_SEQ));
     }
@@ -71,21 +71,11 @@ public class MealRestControllerTest extends AbstractControllerTest {
 
     @Test
     public void testGetAll() throws Exception {
-        mockMvc.perform(get(REST_URL).contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get(REST_URL))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(MATCHER_WITH_EXCEED.contentListMatcher(MealsUtil.getWithExceeded(MEALS, USER.getCaloriesPerDay())));
-    }
-
-    @Test
-    public void testGetBetween() throws Exception {
-        mockMvc.perform(get(REST_URL + "between?startDateTime=2015-05-30T07:00&endDateTime=2015-05-31T11:00:00"))
-                .andExpect(status().isOk())
-                .andDo(print())
-                .andExpect(MATCHER_WITH_EXCEED.contentListMatcher(
-                        MealsUtil.createWithExceed(MEAL4, true),
-                        MealsUtil.createWithExceed(MEAL1, false)));
     }
 
     @Test
