@@ -39,8 +39,6 @@ public class AdminAjaxController extends AbstractUserController {
         User user = new User(id, name, email, password, Role.ROLE_USER);
         if (user.isNew()) {
             super.create(user);
-        } else {
-            super.update(user, id);
         }
     }
 }

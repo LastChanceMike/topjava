@@ -9,8 +9,10 @@ function makeEditable() {
     });
 
     $(document).ajaxError(function (event, jqXHR, options, jsExc) {
-        failNoty(event, jqXHR, options, jsExc);
+        failNoty(jqXHR);
     });
+    // solve problem with cache in IE: https://stackoverflow.com/a/4303862/548473
+    $.ajaxSetup({ cache: false });
 }
 
 function add() {
@@ -72,10 +74,10 @@ function successNoty(text) {
     });
 }
 
-function failNoty(event, jqXHR, options, jsExc) {
+function failNoty(jqXHR) {
     closeNoty();
     failedNote = noty({
-        text: 'Failed: ' + jqXHR.statusText + "<br>",
+        text: 'Error status: ' + jqXHR.status,
         type: 'error',
         layout: 'bottomRight'
     });

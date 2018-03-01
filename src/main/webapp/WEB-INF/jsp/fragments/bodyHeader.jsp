@@ -7,7 +7,7 @@
 
         <div class="collapse navbar-collapse">
             <form class="navbar-form navbar-right">
-                <a class="btn btn-info" role="button" href="users"><spring:message code="users.title"/></a>
+                <a class="btn btn-info" href="users"><spring:message code="users.title"/></a>
 
                 <a class="btn btn-primary" href="">
                     <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>
