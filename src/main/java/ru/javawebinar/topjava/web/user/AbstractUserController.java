@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.service.UserService;
+import ru.javawebinar.topjava.to.UserTo;
 
 import java.util.List;
 
@@ -44,6 +45,11 @@ public abstract class AbstractUserController {
         log.info("update {}", user);
         checkIdConsistent(user, id);
         service.update(user);
+    }
+
+    public void update(UserTo userTo) {
+        log.info("update " + userTo);
+        service.update(userTo);
     }
 
     public User getByMail(String email) {
