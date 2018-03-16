@@ -43,15 +43,15 @@ public abstract class AbstractMealController {
 
     public Meal create(Meal meal) {
         int userId = AuthorizedUser.id();
-        checkNew(meal);
         LOG.info("create {} for User {}", meal, userId);
+        checkNew(meal);
         return service.save(meal, userId);
     }
 
     public void update(Meal meal, int id) {
         int userId = AuthorizedUser.id();
+        LOG.info("update {} with id={} for User {}", meal, id, userId);
         checkIdConsistent(meal, id);
-        LOG.info("update {} for User {}", meal, userId);
         service.update(meal, userId);
     }
 
