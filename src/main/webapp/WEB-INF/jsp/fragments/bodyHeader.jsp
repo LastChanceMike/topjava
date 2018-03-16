@@ -1,4 +1,5 @@
-<%@page contentType="text/html" pageEncoding="UTF-8" %>
+<%@ page session="false" %>
+<%@ page contentType="text/html" pageEncoding="UTF-8" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
