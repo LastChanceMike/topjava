@@ -129,4 +129,30 @@ public class MealRestControllerTest extends AbstractControllerTest {
                 .andExpect(MATCHER_WITH_EXCEED.contentListMatcher(
                         MealsUtil.getWithExceeded(Arrays.asList(MEAL6, MEAL5, MEAL4, MEAL3, MEAL2, MEAL1), USER.getCaloriesPerDay())));
     }
+
+    @Test
+    public void testCreateInvalid() throws Exception {
+        Meal invalid = new Meal(null, null, "Dummy", 200);
+        mockMvc.perform(post(REST_URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(JsonUtil.writeValue(invalid))
+                .with(userHttpBasic(ADMIN)))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity())
+                .andExpect(content().json("{'cause':'ValidationException'}"))
+                .andDo(print());
+    }
+
+    @Test
+    public void testUpdateInvalid() throws Exception {
+        Meal invalid = new Meal(MEAL1_ID, null, null, 6000);
+        mockMvc.perform(put(REST_URL + MEAL1_ID)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(JsonUtil.writeValue(invalid))
+                .with(userHttpBasic(USER)))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity())
+                .andExpect(content().json("{'cause':'ValidationException'}"))
+                .andDo(print());
+    }
 }
