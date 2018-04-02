@@ -2,10 +2,18 @@ package ru.javawebinar.topjava.web.user;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.javawebinar.topjava.model.User;
 import ru.javawebinar.topjava.service.UserService;
 import ru.javawebinar.topjava.to.UserTo;
+import ru.javawebinar.topjava.util.exception.ErrorInfo;
+import ru.javawebinar.topjava.web.ExceptionInfoHandler;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 import static ru.javawebinar.topjava.util.ValidationUtil.checkIdConsistent;
@@ -17,6 +25,9 @@ public abstract class AbstractUserController {
     public static final String EXCEPTION_DUPLICATE_EMAIL = "exception.user.duplicateEmail";
 
     private final UserService service;
+
+    @Autowired
+    private ExceptionInfoHandler exceptionInfoHandler;
 
     public AbstractUserController(UserService service) {
         this.service = service;
@@ -63,5 +74,10 @@ public abstract class AbstractUserController {
     public void enable(int id, boolean enabled) {
         log.info((enabled ? "enable " : "disable ") + id);
         service.enable(id, enabled);
+    }
+
+    @ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ErrorInfo> duplicateEmailException(HttpServletRequest req, DataIntegrityViolationException e) {
+        return exceptionInfoHandler.getErrorInfoResponseEntity(req, e, EXCEPTION_DUPLICATE_EMAIL, HttpStatus.CONFLICT);
     }
 }

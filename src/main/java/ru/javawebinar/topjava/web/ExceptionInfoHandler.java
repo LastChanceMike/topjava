@@ -2,10 +2,12 @@ package ru.javawebinar.topjava.web;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -21,6 +23,9 @@ import java.util.Arrays;
 @Order(Ordered.HIGHEST_PRECEDENCE + 5)
 public class ExceptionInfoHandler {
     private static Logger LOG = LoggerFactory.getLogger(ExceptionInfoHandler.class);
+
+    @Autowired
+    private MessageUtil messageUtil;
 
     //  http://stackoverflow.com/a/22358422/548473
     @ResponseStatus(value = HttpStatus.UNPROCESSABLE_ENTITY)
@@ -79,5 +84,11 @@ public class ExceptionInfoHandler {
     private static ErrorInfo logAndGetErrorInfo(HttpServletRequest req, String cause, String... details) {
         LOG.warn("{} exception at request {}: {}", cause, req.getRequestURL(), Arrays.toString(details));
         return new ErrorInfo(req.getRequestURL(), cause, details);
+    }
+
+    public ResponseEntity<ErrorInfo> getErrorInfoResponseEntity(HttpServletRequest req, Exception e, String msgCode, HttpStatus httpStatus) {
+        LOG.warn("Application error: {}", ValidationUtil.getRootCause(e).toString());
+        ErrorInfo errorInfo = logAndGetErrorInfo(req, ValidationUtil.getRootCause(e).getClass().getSimpleName(), messageUtil.getMessage(msgCode));
+        return new ResponseEntity<>(errorInfo, httpStatus);
     }
 }
