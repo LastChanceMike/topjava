@@ -13,7 +13,7 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h3><spring:message code="users.title"/></h3>
+        <h3><spring:message code="user.title"/></h3>
         <br/>
         <a class="btn btn-primary" onclick="add()">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
@@ -23,11 +23,11 @@
         <table class="table table-striped display" id="datatable">
             <thead>
             <tr>
-                <th><spring:message code="users.name"/></th>
-                <th><spring:message code="users.email"/></th>
-                <th><spring:message code="users.roles"/></th>
-                <th><spring:message code="users.active"/></th>
-                <th><spring:message code="users.registered"/></th>
+                <th><spring:message code="user.name"/></th>
+                <th><spring:message code="user.email"/></th>
+                <th><spring:message code="user.roles"/></th>
+                <th><spring:message code="user.active"/></th>
+                <th><spring:message code="user.registered"/></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -47,26 +47,26 @@
                     <input type="hidden" id="id" name="id">
 
                     <div class="form-group">
-                        <label for="name" class="control-label col-xs-3"><spring:message code="users.name"/></label>
+                        <label for="name" class="control-label col-xs-3"><spring:message code="user.name"/></label>
 
                         <div class="col-xs-9">
-                            <input type="text" class="form-control" id="name" name="name" placeholder="<spring:message code="users.name"/>">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="<spring:message code="user.name"/>">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="email" class="control-label col-xs-3"><spring:message code="users.email"/></label>
+                        <label for="email" class="control-label col-xs-3"><spring:message code="user.email"/></label>
 
                         <div class="col-xs-9">
-                            <input type="email" class="form-control" id="email" name="email" placeholder="<spring:message code="users.email"/>">
+                            <input type="email" class="form-control" id="email" name="email" placeholder="<spring:message code="user.email"/>">
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="password" class="control-label col-xs-3"><spring:message code="users.password"/></label>
+                        <label for="password" class="control-label col-xs-3"><spring:message code="user.password"/></label>
 
                         <div class="col-xs-9">
-                            <input type="password" class="form-control" id="password" name="password" placeholder="<spring:message code="users.password"/>">
+                            <input type="password" class="form-control" id="password" name="password" placeholder="<spring:message code="user.password"/>">
                         </div>
                     </div>
 
@@ -86,7 +86,7 @@
 </body>
 <jsp:include page="fragments/i18n.jsp"/>
 <script type="text/javascript">
-    i18n["addTitle"] = '<spring:message code="users.add"/>';
-    i18n["editTitle"] = '<spring:message code="users.edit"/>';
+    i18n["addTitle"] = '<spring:message code="user.add"/>';
+    i18n["editTitle"] = '<spring:message code="user.edit"/>';
 </script>
 </html>

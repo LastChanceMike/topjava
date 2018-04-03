@@ -13,7 +13,7 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h3><spring:message code="meals.title"/></h3>
+        <h3><spring:message code="meal.title"/></h3>
 
         <div class="row">
             <div class="col-sm-7">
@@ -22,14 +22,14 @@
                         <form:form class="form-horizontal" id="filter">
                             <div class="form-group">
                                 <label class="control-label col-sm-3" for="startDate"><spring:message
-                                        code="meals.startDate"/>:</label>
+                                        code="meal.startDate"/>:</label>
 
                                 <div class="col-sm-3">
                                     <input class="form-control" name="startDate" id="startDate">
                                 </div>
 
                                 <label class="control-label col-sm-4" for="startTime"><spring:message
-                                        code="meals.startTime"/>:</label>
+                                        code="meal.startTime"/>:</label>
 
                                 <div class="col-sm-2">
                                     <input class="form-control" name="startTime" id="startTime">
@@ -37,14 +37,14 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-sm-3" for="endDate"><spring:message
-                                        code="meals.endDate"/>:</label>
+                                        code="meal.endDate"/>:</label>
 
                                 <div class="col-sm-3">
                                     <input class="form-control" name="endDate" id="endDate">
                                 </div>
 
                                 <label class="control-label col-sm-4" for="endTime"><spring:message
-                                        code="meals.endTime"/>:</label>
+                                        code="meal.endTime"/>:</label>
 
                                 <div class="col-sm-2">
                                     <input class="form-control" name="endTime" id="endTime">
@@ -70,9 +70,9 @@
         <table class="table table-striped display" id="datatable">
             <thead>
             <tr>
-                <th><spring:message code="meals.dateTime"/></th>
-                <th><spring:message code="meals.description"/></th>
-                <th><spring:message code="meals.calories"/></th>
+                <th><spring:message code="meal.dateTime"/></th>
+                <th><spring:message code="meal.description"/></th>
+                <th><spring:message code="meal.calories"/></th>
                 <th></th>
                 <th></th>
             </tr>
@@ -93,25 +93,25 @@
 
                     <div class="form-group">
                         <label for="dateTime" class="control-label col-xs-3"><spring:message
-                                code="meals.dateTime"/></label>
+                                code="meal.dateTime"/></label>
 
                         <div class="col-xs-9">
                             <input class="form-control" id="dateTime" name="dateTimeUI"
-                                   placeholder="<spring:message code="meals.dateTime"/>">
+                                   placeholder="<spring:message code="meal.dateTime"/>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="description" class="control-label col-xs-3"><spring:message
-                                code="meals.description"/></label>
+                                code="meal.description"/></label>
 
                         <div class="col-xs-9">
                             <input type="text" class="form-control" id="description" name="description"
-                                   placeholder="<spring:message code="meals.description"/>">
+                                   placeholder="<spring:message code="meal.description"/>">
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="calories" class="control-label col-xs-3"><spring:message
-                                code="meals.calories"/></label>
+                                code="meal.calories"/></label>
 
                         <div class="col-xs-9">
                             <input type="number" class="form-control" id="calories" name="calories" placeholder="1000">
@@ -133,7 +133,7 @@
 </body>
 <jsp:include page="fragments/i18n.jsp"/>
 <script type="text/javascript">
-    i18n["addTitle"] = '<spring:message code="meals.add"/>';
-    i18n["editTitle"] = '<spring:message code="meals.edit"/>';
+    i18n["addTitle"] = '<spring:message code="meal.add"/>';
+    i18n["editTitle"] = '<spring:message code="meal.edit"/>';
 </script>
 </html>

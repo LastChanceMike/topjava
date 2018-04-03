@@ -63,9 +63,9 @@ public class ExceptionInfoHandler {
         return logAndGetErrorInfo(req, e, true);
     }
 
-    private static ErrorInfo logAndGetValidationErrorInfo(HttpServletRequest req, BindingResult result) {
-        String[] details = result.getFieldErrors().stream()
-                .map(fe -> fe.getField() + ' ' + fe.getDefaultMessage())
+    private ErrorInfo logAndGetValidationErrorInfo(HttpServletRequest req, BindingResult result) {
+        String[] details = result.getAllErrors().stream()
+                .map(fe -> messageUtil.getMessage(fe))
                 .toArray(String[]::new);
 
         return logAndGetErrorInfo(req, "ValidationException", details);
